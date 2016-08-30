@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>
+        Angular form demo
+    </title>
+    <script type="text/javascript" src="jquery-3.1.0.min.js"> </script>
+    <script type="text/javascript" src="angular.js"> </script>
+    <script type="text/javascript" src="bootstrap.js"> </script>
+    <script type="text/javascript" src="mock-Ajax.js"> </script>
+    <script type="text/javascript" src="userController.js"> </script>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+</head>
+<body ng-app="mainModule">
+    <div ng-controller="userController as controller">
+        <div class="panel panel-info" ng-init="controller.init()">
+            <div class="panel-heading">Create User</div>
+            <div class="panel-body">
+                <form name="userCreationForm" ng-submit="controller.signUp(userCreationForm)"
+                      class="form-horizontal" role="form" novalidate>
+                    <div class="form-group">
+                        <label for="inputUserName" class="col-sm-3 control-label">User Name</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control"
+                                   id="inputUserName" 
+                                   name="inputUserName"
+                                   placeholder="User Name"
+                                   ng-model="controller.user.userName"
+                                   ng-minlength="3"
+                                   required />
+                        </div>
+                        <p ng-show="userCreationForm.inputUserName.$invalid" class="col-sm-5">Username is too short.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-4">
+                            <input type="email"
+                                   class="form-control"
+                                   id="inputEmail"
+                                   name="inputEmail"
+                                   placeholder="Email"
+                                   ng-model="controller.user.email"
+                                   required />
+                        </div>
+                        <p ng-show="userCreationForm.inputEmail.$invalid" class="col-sm-5">Email invalid.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-sm-3 control-label">Password</label>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control"
+                                   id="inputPassword"
+                                   name="inputPassword"
+                                   placeholder="Password"
+                                   ng-model="controller.user.password"
+                                   ng-minlength="3"
+                                   required/>
+                        </div>
+                        <p ng-show="userCreationForm.inputPassword.$invalid" class="col-sm-5">Password too short.</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-md btn-primary col-md-offset-3">Create User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
